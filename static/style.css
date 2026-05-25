@@ -1,0 +1,511 @@
+/* ── FUENTES Y RESET ── */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=VT323&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --rosa:      #ffb3c6;
+    --rosa-dark: #ff85a1;
+    --verde:     #b5ead7;
+    --verde-dark:#6bcba5;
+    --blanco:    #ffffff;
+    --gris:      #f8f8f8;
+    --texto:     #444444;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #fff5f8;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(255,179,198,0.08) 40px,
+        rgba(255,179,198,0.08) 80px
+    );
+    color: var(--texto);
+}
+
+/* ── MARQUEE ── */
+.marquee-bar {
+    background: var(--rosa-dark);
+    color: white;
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+    padding: 6px 0;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.marquee-bar marquee {
+    width: 100%;
+}
+
+/* ── HEADER ── */
+header {
+    background: var(--blanco);
+    border-bottom: 3px solid var(--rosa);
+    padding: 16px 40px;
+    box-shadow: 0 2px 8px rgba(255,133,161,0.15);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-emoji {
+    font-size: 2.8rem;
+    filter: drop-shadow(2px 2px 0px var(--rosa));
+}
+
+h1 {
+    font-family: 'VT323', monospace;
+    font-size: 2.4rem;
+    color: var(--rosa-dark);
+    text-shadow: 2px 2px 0px var(--verde-dark);
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-size: 0.8rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--rosa-dark);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 6px 14px;
+    border: 2px solid var(--rosa);
+    border-radius: 20px;
+    transition: all 0.2s;
+}
+
+nav a:hover {
+    background: var(--rosa);
+    color: white;
+}
+
+/* ── MAIN ── */
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* ── SECCIÓN CÁMARA ── */
+.camara-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* ── CARD CÁMARA ── */
+.camara-card {
+    background: var(--blanco);
+    border: 3px solid var(--rosa);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 4px 4px 0px var(--rosa);
+}
+
+.card-header {
+    background: var(--rosa);
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.badge-live {
+    background: #ff4d6d;
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    animation: pulso 1.2s infinite;
+}
+
+@keyframes pulso {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+}
+
+.hint {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    color: #888;
+    background: var(--gris);
+}
+
+/* ── BOTÓN CÁMARA ── */
+.camara-controles {
+    padding: 12px 16px;
+    background: var(--gris);
+    display: flex;
+    justify-content: center;
+}
+
+.camara-controles button {
+    padding: 10px 24px;
+    background: var(--verde);
+    border: 2px solid var(--verde-dark);
+    border-radius: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.camara-controles button:hover,
+.camara-controles button.activo {
+    background: var(--verde-dark);
+    color: white;
+}
+
+/* ── PLACEHOLDER CÁMARA ── */
+.placeholder-camara {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #1a1a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #888;
+}
+
+.placeholder-camara span { font-size: 3rem; }
+.placeholder-camara p { font-size: 0.9rem; }
+
+/* ── PANEL RESULTADO ── */
+.resultado-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.resultado-card,
+.palabra-card,
+.historial-card {
+    background: var(--blanco);
+    border: 3px solid var(--verde);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 4px 4px 0px var(--verde-dark);
+}
+
+.resultado-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #888;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.letra-display {
+    font-family: 'VT323', monospace;
+    font-size: 5rem;
+    color: var(--rosa-dark);
+    text-align: center;
+    text-shadow: 3px 3px 0px var(--verde-dark);
+    line-height: 1;
+    margin-bottom: 14px;
+}
+
+.confianza-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+}
+
+.confianza-label { color: #aaa; }
+
+.barra-fondo {
+    flex: 1;
+    height: 12px;
+    background: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.barra-relleno {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--verde-dark), var(--rosa-dark));
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+.confianza-pct {
+    font-weight: 700;
+    color: var(--rosa-dark);
+    min-width: 40px;
+}
+
+/* ── MODO DELETREAR ── */
+.palabra-objetivo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.palabra-objetivo {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.letra-objetivo {
+    width: 44px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    background: var(--gris);
+    color: #bbb;
+    transition: all 0.3s;
+}
+
+.letra-objetivo.actual {
+    border-color: var(--rosa-dark);
+    background: var(--rosa);
+    color: var(--rosa-dark);
+    transform: scale(1.15);
+    box-shadow: 0 0 10px rgba(255,133,161,0.4);
+}
+
+.letra-objetivo.completada {
+    border-color: var(--verde-dark);
+    background: var(--verde);
+    color: var(--verde-dark);
+}
+
+/* ── MENSAJES ── */
+.mensaje-resultado {
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    min-height: 24px;
+    margin-bottom: 10px;
+}
+
+.mensaje-resultado.correcto { color: var(--verde-dark); }
+.mensaje-resultado.exito    { color: var(--rosa-dark); font-size: 1.1rem; }
+
+/* ── BOTONES ── */
+.botones {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.botones button {
+    flex: 1;
+    padding: 8px 10px;
+    border: 2px solid var(--verde-dark);
+    background: var(--verde);
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.botones button:hover {
+    background: var(--verde-dark);
+    color: white;
+}
+
+/* ── HISTORIAL ── */
+#historial {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.historial-chip {
+    background: var(--gris);
+    border: 2px solid var(--rosa);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--rosa-dark);
+}
+
+/* ── CÓMO USAR ── */
+.como-usar-section {
+    background: var(--blanco);
+    border: 3px solid var(--rosa);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 4px 4px 0px var(--rosa);
+}
+
+.como-usar-section h2,
+.abecedario-section h2 {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    color: var(--rosa-dark);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.pasos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.paso {
+    background: var(--gris);
+    border: 2px solid var(--verde);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+}
+
+.paso-num {
+    display: inline-block;
+    background: var(--verde-dark);
+    color: white;
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.paso p { font-size: 0.88rem; }
+
+/* ── ABECEDARIO ── */
+.abecedario-section {
+    background: var(--blanco);
+    border: 3px solid var(--verde);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 4px 4px 0px var(--verde-dark);
+}
+
+.letras-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.letra-chip {
+    background: var(--rosa);
+    border: 2px solid var(--rosa-dark);
+    border-radius: 10px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    color: var(--rosa-dark);
+    cursor: default;
+    transition: transform 0.15s;
+}
+
+.letra-chip:hover { transform: scale(1.15); }
+
+.letra-chip.special {
+    background: var(--verde);
+    border-color: var(--verde-dark);
+    color: var(--verde-dark);
+    width: 64px;
+    font-size: 1rem;
+}
+
+/* ── FOOTER ── */
+footer {
+    background: var(--rosa-dark);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+
+
+/* ── TOOLTIP SEÑAS ── */
+.letra-chip {
+    position: relative;
+}
+
+.tooltip-seña {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 2px solid var(--rosa-dark);
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
+    z-index: 100;
+    width: 110px;
+}
+
+.tooltip-seña img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Flechita abajo del tooltip */
+.tooltip-seña::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-top-color: var(--rosa-dark);
+}
+
+.letra-chip:hover .tooltip-seña {
+    display: block;
+}

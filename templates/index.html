@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeñasAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="marquee-bar" style="text-align:center;">
+        <marquee>Bienvenido a SeñasAI  Traductor de Lenguaje de Señas en Tiempo Real  Pon tu mano en el recuadro verde  Bienvenido a SeñasAI</marquee>
+    </div>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo-area">
+                <span class="logo-emoji">✋</span>
+                <div>
+                    <h1>SeñasAI</h1>
+                    <p class="tagline">~ traductor de lenguaje de señas ~</p>
+                </div>
+            </div>
+            <nav>
+                <a href="#">Inicio</a>
+                <a href="#como-usar">Cómo usar</a>
+                <a href="#abecedario">Abecedario</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="camara-section">
+
+            <!-- CÁMARA -->
+            <div class="camara-card">
+                <div class="card-header">
+                    <span>📷 Cámara en vivo</span>
+                    <span class="badge-live" id="badgeLive" style="display:none">● EN VIVO</span>
+                </div>
+
+                <!-- Placeholder cuando cámara está apagada -->
+                <div id="placeholderCamara" class="placeholder-camara">
+                    <span>📷</span>
+                    <p>Activa la cámara para comenzar</p>
+                </div>
+
+                <!-- Video stream (oculto al inicio) -->
+                <img src="" id="videoStream" alt="Cámara" style="display:none; width:100%;"/>
+
+                <div class="camara-controles">
+                    <button id="btnCamara" onclick="toggleCamara()">Activar cámara</button>
+                </div>
+                <p class="hint">💡 Coloca tu mano dentro del recuadro verde</p>
+            </div>
+
+            <!-- PANEL DERECHO -->
+            <div class="resultado-panel">
+
+                <!-- Letra detectada -->
+                <div class="resultado-card">
+                    <p class="resultado-label">Letra detectada</p>
+                    <div class="letra-display" id="letraDisplay">?</div>
+                    <div class="confianza-wrapper">
+                        <span class="confianza-label">Confianza:</span>
+                        <div class="barra-fondo">
+                            <div class="barra-relleno" id="barraConfianza"></div>
+                        </div>
+                        <span class="confianza-pct" id="confianzaTexto">0%</span>
+                    </div>
+                </div>
+
+                <!-- Modo deletrear -->
+                <div class="palabra-card">
+                    <p class="resultado-label">Deletrea esta palabra</p>
+
+                    <div class="palabra-objetivo-wrapper">
+                        <div id="palabraObjetivo" class="palabra-objetivo"></div>
+                    </div>
+
+                    <div id="mensajeResultado" class="mensaje-resultado"></div>
+
+                    <div class="botones">
+                        <button onclick="saltarPalabra()">⏭ Nueva palabra</button>
+                    </div>
+                </div>
+
+                
+            </div>
+        </section>
+
+        <!-- CÓMO USAR -->
+        <section class="como-usar-section" id="como-usar">
+            <h2>¿Cómo usar SeñasAI?</h2>
+            <div class="pasos">
+                <div class="paso">
+                    <span class="paso-num">1</span>
+                    <p>Presiona "Activar cámara" para encender la webcam</p>
+                </div>
+                <div class="paso">
+                    <span class="paso-num">2</span>
+                    <p>Coloca tu mano dentro del recuadro verde</p>
+                </div>
+                <div class="paso">
+                    <span class="paso-num">3</span>
+                    <p>Deletrea la palabra mostrada haciendo cada seña del ASL</p>
+                </div>
+                <div class="paso">
+                    <span class="paso-num">4</span>
+                    <p>Cuando completes la palabra, aparece una nueva automáticamente</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- ABECEDARIO -->
+<section class="abecedario-section" id="abecedario">
+    <h2>Abecedario ASL</h2>
+    <div class="letras-grid">
+        <div class="letra-chip" data-letra="A">A<div class="tooltip-seña"><img src="/static/signs/A.png" alt="Seña A"/></div></div>
+        <div class="letra-chip" data-letra="B">B<div class="tooltip-seña"><img src="/static/signs/B.png" alt="Seña B"/></div></div>
+        <div class="letra-chip" data-letra="C">C<div class="tooltip-seña"><img src="/static/signs/C.png" alt="Seña C"/></div></div>
+        <div class="letra-chip" data-letra="D">D<div class="tooltip-seña"><img src="/static/signs/D.png" alt="Seña D"/></div></div>
+        <div class="letra-chip" data-letra="E">E<div class="tooltip-seña"><img src="/static/signs/E.png" alt="Seña E"/></div></div>
+        <div class="letra-chip" data-letra="F">F<div class="tooltip-seña"><img src="/static/signs/F.png" alt="Seña F"/></div></div>
+        <div class="letra-chip" data-letra="G">G<div class="tooltip-seña"><img src="/static/signs/G.png" alt="Seña G"/></div></div>
+        <div class="letra-chip" data-letra="H">H<div class="tooltip-seña"><img src="/static/signs/H.png" alt="Seña H"/></div></div>
+        <div class="letra-chip" data-letra="I">I<div class="tooltip-seña"><img src="/static/signs/I.png" alt="Seña I"/></div></div>
+        <div class="letra-chip" data-letra="J">J<div class="tooltip-seña"><img src="/static/signs/J.png" alt="Seña J"/></div></div>
+        <div class="letra-chip" data-letra="K">K<div class="tooltip-seña"><img src="/static/signs/K.png" alt="Seña K"/></div></div>
+        <div class="letra-chip" data-letra="L">L<div class="tooltip-seña"><img src="/static/signs/L.png" alt="Seña L"/></div></div>
+        <div class="letra-chip" data-letra="M">M<div class="tooltip-seña"><img src="/static/signs/M.png" alt="Seña M"/></div></div>
+        <div class="letra-chip" data-letra="N">N<div class="tooltip-seña"><img src="/static/signs/N.png" alt="Seña N"/></div></div>
+        <div class="letra-chip" data-letra="O">O<div class="tooltip-seña"><img src="/static/signs/O.png" alt="Seña O"/></div></div>
+        <div class="letra-chip" data-letra="P">P<div class="tooltip-seña"><img src="/static/signs/P.png" alt="Seña P"/></div></div>
+        <div class="letra-chip" data-letra="Q">Q<div class="tooltip-seña"><img src="/static/signs/Q.png" alt="Seña Q"/></div></div>
+        <div class="letra-chip" data-letra="R">R<div class="tooltip-seña"><img src="/static/signs/R.png" alt="Seña R"/></div></div>
+        <div class="letra-chip" data-letra="S">S<div class="tooltip-seña"><img src="/static/signs/S.png" alt="Seña S"/></div></div>
+        <div class="letra-chip" data-letra="T">T<div class="tooltip-seña"><img src="/static/signs/T.png" alt="Seña T"/></div></div>
+        <div class="letra-chip" data-letra="U">U<div class="tooltip-seña"><img src="/static/signs/U.png" alt="Seña U"/></div></div>
+        <div class="letra-chip" data-letra="V">V<div class="tooltip-seña"><img src="/static/signs/V.png" alt="Seña V"/></div></div>
+        <div class="letra-chip" data-letra="W">W<div class="tooltip-seña"><img src="/static/signs/W.png" alt="Seña W"/></div></div>
+        <div class="letra-chip" data-letra="X">X<div class="tooltip-seña"><img src="/static/signs/X.png" alt="Seña X"/></div></div>
+        <div class="letra-chip" data-letra="Y">Y<div class="tooltip-seña"><img src="/static/signs/Y.png" alt="Seña Y"/></div></div>
+        <div class="letra-chip" data-letra="Z">Z<div class="tooltip-seña"><img src="/static/signs/Z.png" alt="Seña Z"/></div></div>
+        <div class="letra-chip special">DEL</div>
+        <div class="letra-chip special">SPC</div>
+        <div class="letra-chip special">NGT</div>
+    </div>
+</section>
+
+    </main>
+
+    <footer>
+        <p>SeñasAI — Proyecto Final IA</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
